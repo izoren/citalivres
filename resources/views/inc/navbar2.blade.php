@@ -41,20 +41,6 @@
                     <li class="{{Request::is('/')?'active' : ''}}">
                         <a href="{{url('/contact')}}">Contact</a>
                     </li>
-                    <li class="menu-has-children">
-                        <a href="">Pages</a>
-                        <ul class="">
-                            <li>
-                                <a href="blog-single.html">Blog Single</a>
-                            </li>
-                            <li>
-                                <a href="category.html">Category</a>
-                            </li>
-                            <li>
-                                <a href="elements.html">Elements</a>
-                            </li>
-                        </ul>
-                    </li>
                 </ul>
             </nav><!-- #nav-menu-container -->
         </div>
