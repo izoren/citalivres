@@ -38,3 +38,8 @@ Route::group(['prefix' => 'auteurs', 'as' => 'auteurs.'],function (){
 });
 
 Route::get('/partenaires',['uses' => 'Partenaires\PartenairesController@index', 'as' => 'index']);
+
+Route::group(['prefix' => 'contact', 'as' => 'contact.'],function () {
+    Route::get('/', ['uses' => 'Contact\ContactController@create', 'as' => 'create']);
+    Route::post('/', ['uses' => 'Contact\ContactController@store', 'as' => 'store']);
+});

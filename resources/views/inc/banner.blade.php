@@ -30,8 +30,13 @@
             <div class="row d-flex align-items-center justify-content-center">
                 <div class="about-content col-lg-12">
 
-                    <h1 class="text-white"> Les @if(Route::is('auteurs.*')) auteurs  @elseif(Request::is('partenaires')) partenaires
-
+                    <h1 class="text-white">@if(Request::is('contact'))
+                            Contact
+                        @else Les
+                            @if(Route::is('auteurs.*'))
+                                auteurs
+                            @elseif(Request::is('partenaires')) partenaires
+                                @endif
                     @endif
                     </h1>
 {{--
