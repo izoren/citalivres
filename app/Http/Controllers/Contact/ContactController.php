@@ -34,7 +34,7 @@ class ContactController extends Controller
                 'email' => $request -> email,
                 'message' => $request -> message
             );
-        Mail::to('izoren174@gmail.com')->send(new Contact($data));
+        Mail::to('francois.jabalot@gmail.com')->send(new Contact($data));
         Session::flash('success', 'Votre message a bien été envoyé.');
         return redirect(route('contact.create'));
     }
