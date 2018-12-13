@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Contact;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ContactRequest;
 use Citalivres\Contact\ContactRepository;
-use App\Http\Requests\ContactFormRequest;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Contact;
 
 class ContactController extends Controller
 {
@@ -18,19 +20,22 @@ class ContactController extends Controller
 
     public function create()
     {
-      /*  $contact = $this->contactRepository->get();*/
         return view('contact.create');
-
     }
-    public function store(Request $request)
+    public function store(ContactRequest $request)
     {
         $contact = $this->contactRepository->store($request->all());
         if (!$contact) {
-            flash('Erreur lors de la création', 'danger');
+            Session::flash('danger', 'Erreur lors de l\'envois de votre message.');
             return redirect()->back()->withInput();
         } else
-            flash('Création réussie', 'success');
-
-        return redirect(route('badminton.adherents.index'));
+            $data = array(
+                'nom' => $request -> nom,
+                'email' => $request -> email,
+                'message' => $request -> message
+            );
+        Mail::to('izoren174@gmail.com')->send(new Contact($data));
+        Session::flash('success', 'Votre message a bien été envoyé.');
+        return redirect(route('contact.create'));
     }
 }

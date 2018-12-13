@@ -15,4 +15,11 @@ class ContactRepository
         $contact = Contact::all();
         return $contact;
     }
+
+    public function store(array $data)
+    {
+        $contact = new Contact($data);
+        $contact->save();
+        return $contact;
+    }
 }

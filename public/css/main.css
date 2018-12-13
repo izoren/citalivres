@@ -7,6 +7,11 @@
 /*  Basic Style 
 /* =================================== */
 
+.form-group.required .control-label:after{
+  content: '*';
+  color: red;
+}
+
 .a-autor{
   color: black;
 }
