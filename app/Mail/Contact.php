@@ -31,6 +31,6 @@ class Contact extends Mailable
     public function build()
     {
 
-        return $this->from('francois.jabalot@gmail.com')->subject('Nouveau message sur citalivres.fr')->view('dynamic_email_template')->with('data', $this->data);
+        return $this->from('izorspam@gmail.com')->subject('Nouveau message sur citalivres.fr')->view('dynamic_email_template')->with('data', $this->data);
     }
 }
